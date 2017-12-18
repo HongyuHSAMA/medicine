@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.dao.MedicineDao">
+
+    <update id="setMedicineInfo" parameterType="long" >
+        UPDATE medicine AS m
+        SET m.medicine_name=#{medicineName},
+        m.expiration_date=#{expirationDate},
+        m.price=#{price},
+        m.description=#{description},
+        m.picture=#{picture},
+        m.medicine_supplier_id = #{medicineSupplierId}
+        WHERE m.medicine_id = #{medicineId}
+    </update>
+
+    <insert id="addMedicine">
+        INSERT INTO medicine(medicine_name, medicine_number,production_date,expiration_date, price, medicine_permitment, description, picture, medicine_supplier_id)
+        VALUE (#{medicineName},#{medicineNumber},#{productionDate},#{expirationDate},#{price},#{medicinePermiment},#{description},#{picture},#{warningNumber})
+    </insert>
+
+    <select id="queryMedicineNumber" resultType="int" >
+        SELECT COUNT(*) FROM medicine
+    </select>
+
+    <select id="queryAll" resultType="com.design.entity.Medicine">
+
+        SELECT * FROM medicine AS m
+        ORDER BY m.medicine_id
+        LIMIT #{offset},#{limit}
+
+    </select>
+
+    <select id="queryById" resultType="com.design.entity.Medicine" parameterType="long">
+        SELECT * FROM medicine
+        WHERE medicine_id=#{medicineId}
+    </select>
+</mapper>

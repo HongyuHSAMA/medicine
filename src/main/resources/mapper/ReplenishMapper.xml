@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.dao.ReplenishDao">
+
+
+    <!--
+    @Param("replenishMedicineId") long replenishMedicineId,
+                            @Param("createTime") Date createTime,
+                            @Param("replenishMedicineNumber") int replenishMedicineNumber,
+                            @Param("replenishWorkerName") long replenishWorkerId,
+                            @Param("replenishMedicinePrice") int replenishMedicinePrice-->
+    <insert id="addReplenishDao">
+        INSERT INTO replenish( replenish_medicine_id, create_time, replenish_medicine_number, replenish_worker_id,replenish_medicine_price)
+            VALUE(#{replenishMedicineId},#{createTime},#{replenishMedicineNumber},#{replenishWorkerId},#{replenishMedicinePrice})
+    </insert>
+
+    <select id="queryAll" resultType="com.design.entity.Replenish" parameterType="int">
+        SELECT * FROM replenish
+        LIMIT #{offset},#{limit}
+    </select>
+
+</mapper>

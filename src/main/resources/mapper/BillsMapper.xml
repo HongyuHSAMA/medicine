@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.dao.BillsDao">
+
+    <!--* @param createTime
+    * @param billMedicineId
+    * @param billMedicineNumber
+    * @param billMedicinePrice
+    * @param
+    * @param billCustomer-->
+    <insert id="addBill">
+        INSERT INTO bills(create_time, bill_medicine_id, bill_medicine_number, bill_medicine_price, bill_worker_id, bill_customer)
+                VALUE (#{createTime},#{billMedicineId},#{billMedicineNumber},#{billMedicinePrice},#{billWorkerId},#{billCustomer})
+    </insert>
+
+    <select id="queryAll" resultType="com.design.entity.Bills" parameterType="int">
+        SELECT * FROM bills
+        LIMIT #{offset},#{limit}
+    </select>
+
+    <select id="queryById" parameterType="long">
+        SELECT * FROM bills WHERE bill_id=#{billId}
+    </select>
+
+    <select id="queryByWorkerId" parameterType="String">
+        SELECT * FROM bills WHERE bill_worker_id = #{billWorkerId}
+    </select>
+</mapper>
