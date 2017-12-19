@@ -85,6 +85,7 @@
       <artifactId>jstl</artifactId>
       <version>1.2</version>
     </dependency>
+
     <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
@@ -178,6 +179,14 @@
       <artifactId>lombok</artifactId>
       <version>1.16.18</version>
       <scope>provided</scope>
+    </dependency>
+
+    <!--pageHelper分页插件依赖-->
+    <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper -->
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper</artifactId>
+      <version>4.1.1</version>
     </dependency>
 
   </dependencies>

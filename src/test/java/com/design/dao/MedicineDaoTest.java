@@ -33,7 +33,7 @@ public class MedicineDaoTest {
     @Test
     public void queryAll() throws Exception {
 
-        List<Medicine> list = medicineDao.queryAll( 0,5 );
+        List<Medicine> list = medicineDao.queryAll(  );
 
         Iterator iterator = list.iterator();
         while(iterator.hasNext()) {

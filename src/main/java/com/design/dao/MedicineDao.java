@@ -57,12 +57,10 @@ public interface MedicineDao {
     int queryMedicineNumber();
 
     /**
-     * 根据偏移量查询药品列表
-     * @param offset  偏移量
-     * @param limit
+     * 查询全部药品信息
      * @return
      */
-    List<Medicine> queryAll(@Param("offset") int offset,@Param("limit") int limit);
+    List<Medicine> queryAll();
 
     /**
      * 根据药品id查询药品信息

@@ -40,7 +40,6 @@
 
         SELECT * FROM medicine AS m
         ORDER BY m.medicine_id
-        LIMIT #{offset},#{limit}
 
     </select>
 
