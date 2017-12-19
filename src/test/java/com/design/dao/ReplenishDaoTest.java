@@ -15,7 +15,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring/spring-dao.xml")
+@ContextConfiguration("classpath:spring/spring-*.xml")
 public class ReplenishDaoTest {
 
     @Resource

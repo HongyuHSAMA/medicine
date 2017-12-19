@@ -2,10 +2,12 @@ package com.design.dao;
 
 import com.design.entity.Bills;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
 
+@Repository
 public interface BillsDao {
 
     /**
@@ -48,4 +50,6 @@ public interface BillsDao {
      * @return
      */
     Bills queryByWorkerId(@Param("billWorkerId") String billWorkerId);
+
+
 }

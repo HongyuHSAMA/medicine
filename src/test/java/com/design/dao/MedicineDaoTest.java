@@ -4,6 +4,7 @@ import com.design.entity.Medicine;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -16,25 +17,12 @@ import java.util.logging.Logger;
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring/spring-dao.xml")
+@ContextConfiguration("classpath:spring/spring-*.xml")
 public class MedicineDaoTest {
 
-
-    @Resource
+    @Autowired
     private MedicineDao medicineDao;
 
-    @Test
-    public void queryByKeyword() throws Exception {
-
-        String medicineName = "油";
-        List<Medicine> list = medicineDao.queryByKeyword( medicineName );
-        Iterator iterator = list.iterator();
-        while (iterator.hasNext()){
-            System.out.println( iterator.next() );
-        }
-
-
-    }
 
     @Test
     public void queryMedicineNumber() throws Exception {
