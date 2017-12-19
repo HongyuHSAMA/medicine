@@ -20,4 +20,5 @@ public class Medicine {
     @Getter @Setter private String description;//description
     @Getter @Setter private String picture;//图片字节存储
     @Getter @Setter private int warningNumber;//预警数量线
+    @Getter @Setter private String medicineSupplierId;//供应商id
 }

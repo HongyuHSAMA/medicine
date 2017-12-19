@@ -19,10 +19,22 @@ import static org.junit.Assert.*;
 @ContextConfiguration("classpath:spring/spring-dao.xml")
 public class MedicineDaoTest {
 
+
     @Resource
     private MedicineDao medicineDao;
 
+    @Test
+    public void queryByKeyword() throws Exception {
 
+        String medicineName = "油";
+        List<Medicine> list = medicineDao.queryByKeyword( medicineName );
+        Iterator iterator = list.iterator();
+        while (iterator.hasNext()){
+            System.out.println( iterator.next() );
+        }
+
+
+    }
 
     @Test
     public void queryMedicineNumber() throws Exception {
