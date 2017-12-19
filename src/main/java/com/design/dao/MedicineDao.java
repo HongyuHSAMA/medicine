@@ -9,6 +9,20 @@ import java.util.List;
 public interface MedicineDao {
 
     /**
+     * 根据id删除药品
+     * @param medicineId
+     * @return
+     */
+    boolean deleteById(@Param( "medicine" ) long medicineId);
+    /**
+     * 根据关键字模糊查询（对应药品名称和供应商id）
+     * @param keyword
+     * @return
+     */
+    //TODO   是否需要将供应商Id改为供应商名称，传入的类型为string，然后需要Id的话，类型不对
+    List<Medicine> queryByKeyword(@Param( "keyword" ) String keyword);
+
+    /**
      * 添加药品
      * @param medicineName
      * @param medicineNumber
@@ -25,7 +39,8 @@ public interface MedicineDao {
                         @Param("productionDate") Date productionDate, @Param("expirationDate")Date expirationDate,
                         @Param("price") int price, @Param("medicinePermiment")String medicinePermiment,
                         @Param("description")String description, @Param("picture")String  picture,
-                        @Param("warningNumber") int warningNumber);
+                        @Param("warningNumber") int warningNumber,
+                        @Param( "medicineSupplierId" ) String medicineSupplierId);
 
     /**
      * 查询药库里药品的种类
@@ -64,4 +79,5 @@ public interface MedicineDao {
                             @Param("description")String description, @Param("picture")String picture,
                             @Param( "medicineSupplierId" ) int medicineSupplierId
                             );
+
 }
