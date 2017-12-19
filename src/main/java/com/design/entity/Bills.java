@@ -8,6 +8,8 @@ import java.util.Date;
 @ToString
 public class Bills {
 
+
+
     @Getter @Setter private long billId;//账单id
     @Getter @Setter private Date createTime;//生成时间
     @Getter @Setter private long billMedicineId;//药品id
