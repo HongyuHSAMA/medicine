@@ -4,6 +4,18 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.design.dao.MedicineDao">
 
+    <delete id="deleteById" parameterType="long">
+        DELETE FROM medicine
+        WHERE medicine_id=#{medicine}
+    </delete>
+
+    <select id="queryByKeyword" parameterType="String" resultType="com.design.entity.Medicine">
+        SELECT * FROM medicine
+        WHERE medicine_name
+              LIKE concat(concat('%',#{keyword}),'%')
+              OR medicine_supplier_id LIKE concat(concat('%',#{keyword}),'%')
+    </select>
+
     <update id="setMedicineInfo" parameterType="long" >
         UPDATE medicine AS m
         SET m.medicine_name=#{medicineName},
