@@ -1,6 +1,8 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false"%>
 <%@ include file="/WEB-INF/jsp/common/_tag.jsp" %>
+
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -20,7 +22,7 @@
     <title>库存后台管理系统</title>
 </head>
 <body>
-<header class="navbar-wrapper">
+<header class="navbar-wrapper" >
     <div class="navbar navbar-fixed-top">
         <div class="container-fluid cl"><a class="logo navbar-logo f-l mr-10 hidden-xs" href="#">库存管理系统</a>
             <span class="logo navbar-slogan f-l mr-10 hidden-xs">v3.1</span>
@@ -55,14 +57,22 @@
     </div>
 </header>
 <aside class="Hui-aside">
+    <div class="menu_dropdown bk_2">
 
 
     <dl id="menu-picture">
-        <dt><i class="Hui-iconfont">&#xe613;</i> 图片管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+        <dt><i class="Hui-iconfont">&#xe616;</i> 库存管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
         <dd>
             <ul>
-                <li><a data-href="picture-list.html" data-title="图片管理" href="javascript:void(0)">图片管理</a></li>
+                <li><a data-href="${basePath}/medicineList" data-title="药品列表" href="javascript:void(0)">药品列表</a></li>
             </ul>
+            <ul>
+                <li><a data-href="${basePath}/medicineList" data-title="入库" href="javascript:void(0)">入库</a></li>
+            </ul>
+            <ul>
+                <li><a data-href="${basePath}/medicineList" data-title="出库" href="javascript:void(0)">出库</a></li>
+            </ul>
+
         </dd>
     </dl>
 
@@ -76,7 +86,7 @@
         <div class="Hui-tabNav-wp">
             <ul id="min_title_list" class="acrossTab cl">
                 <li class="active">
-                    <span title="我的桌面" data-href="welcome.html">我的桌面</span>
+                    <span title="我的桌面" data-href="${basePath}/welcome">我的桌面</span>
                     <em></em></li>
             </ul>
         </div>
@@ -88,7 +98,7 @@
     <div id="iframe_box" class="Hui-article">
         <div class="show_iframe">
             <div style="display:none" class="loading"></div>
-            <iframe scrolling="yes" frameborder="0" src="welcome.html"></iframe>
+            <iframe scrolling="yes" frameborder="0" src="${basePath}/welcome"></iframe>
         </div>
     </div>
 </section>
@@ -104,7 +114,7 @@
 <!--/_footer 作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" src="lib/jquery.contextmenu/jquery.contextmenu.r2.js"></script>
+<script type="text/javascript" src="${basePath}/lib/jquery.contextmenu/jquery.contextmenu.r2.js"></script>
 <script type="text/javascript">
     $(function () {
         /*$("#min_title_list li").contextMenu('Huiadminmenu', {

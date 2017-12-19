@@ -12,6 +12,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <script type="text/javascript" src="${basePath}/lib/html5shiv.js"></script>
     <script type="text/javascript" src="${basePath}/lib/respond.min.js"></script>
+    <%--<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">--%>
     <link rel="stylesheet" type="text/css" href="${basePath}/static/h-ui/css/H-ui.min.css" />
     <link rel="stylesheet" type="text/css" href="${basePath}/static/h-ui.admin/css/H-ui.admin.css" />
     <link rel="stylesheet" type="text/css" href="${basePath}/lib/Hui-iconfont/1.0.8/iconfont.css" />
