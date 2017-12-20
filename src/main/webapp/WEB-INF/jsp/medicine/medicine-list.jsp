@@ -2,11 +2,13 @@
 
 <%@ include file="/WEB-INF/jsp/common/_tag.jsp"%>
 <%@ include file="/WEB-INF/jsp/common/_meta.jsp"%>
-<title>图片列表</title>
+<title>药品列表</title>
 </head>
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 药品管理 <span class="c-gray en">&gt;</span> 药品列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
+
+
 	<%--<div class="text-c"> 日期范围：--%>
 		<%--<input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'logmax\')||\'%y-%M-%d\'}' })" id="logmin" class="input-text Wdate" style="width:120px;">--%>
 		<%-----%>
@@ -14,13 +16,14 @@
 		<%--<input type="text" name="" id="" placeholder=" 图片名称" style="width:250px" class="input-text">--%>
 		<%--<button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜图片</button>--%>
 	<%--</div>--%>
+
 	<div class="cl pd-5 bg-1 bk-gray mt-20">
 		<span class="l">
 
 			<a class="btn btn-primary radius" onclick="picture_add('添加图片','${basePath}/medicineAdd')" href="javascript:;">
 				<i class="Hui-iconfont">&#xe600;</i> 添加药品
 			</a>
-			<a class="btn btn-primary radius" onclick="picture_add('添加图片','${basePath}/medicineAdd')" href="javascript:;">
+			<a class="btn btn-primary radius" onclick="picture_add('添加图片','${basePath}/supplierAdd')" href="javascript:;">
 				<i class="Hui-iconfont">&#xe600;</i> 添加供应商
 			</a>
 		</span>

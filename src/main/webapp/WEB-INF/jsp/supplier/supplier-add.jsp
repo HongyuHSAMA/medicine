@@ -3,82 +3,20 @@
 <%@ include file="/WEB-INF/jsp/common/_tag.jsp"%>
 <%@ include file="/WEB-INF/jsp/common/_meta.jsp"%>
 
-<title>新增药品</title>
+<title>新增供应商</title>
 <link href="${basePath}/lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div class="page-container">
 	<form class="form form-horizontal" id="form-article-add">
+
+
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>药品名称:</label>
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>供应商名称:</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<input type="text" class="input-text" value="" placeholder="" id="" name="">
 			</div>
 		</div>
-
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>国药准字:</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="" name="">
-			</div>
-		</div>
-
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>药品分类:</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<span class="select-box">
-				<select name="" class="select">
-					<option value="0">Rx</option>
-					<option value="1">OTC</option>
-				</select>
-				</span>
-			</div>
-		</div>
-
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>供应商:</label>
-            <div class="formControls col-xs-8 col-sm-9">
-				<span class="select-box">
-				<select name="" class="select">
-					<option value="0">aaa</option>
-					<option value="1">xxx</option>
-				</select>
-				</span>
-            </div>
-        </div>
-
-
-
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>生产日期:</label>
-                 <div class=" formControls col-xs-8 col-sm-9">
-                     <input type="text" onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd' })" id="logmin" class="input-text Wdate" style="width:120px;">
-                     <%--<input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'logmax\')||\'%y-%M-%d\'}' })" id="logmin" class="input-text Wdate" style="width:120px;">--%>
-                     <%--<input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'logmin\')}',maxDate:'%y-%M-%d' })" id="logmax" class="input-text Wdate" style="width:120px;">--%>
-                 </div>
-		</div>
-
-
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>保质期(年):</label>
-            <div class="formControls col-xs-8 col-sm-9">
-				<span class="select-box">
-				<select name="" class="select">
-					<option value="0">1</option>
-					<option value="1">2</option>
-					<option value="2">3</option>
-				</select>
-				</span>
-            </div>
-        </div>
-
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>预警数量(盒):</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="" name="">
-            </div>
-        </div>
-
 
 
 
@@ -122,9 +60,6 @@
 <!--/_footer /作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" src="${basePath}/lib/My97DatePicker/4.8/WdatePicker.js"></script>
-<script type="text/javascript" src="${basePath}/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="${basePath}/lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript" src="${basePath}/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
 <script type="text/javascript" src="${basePath}/lib/jquery.validation/1.14.0/validate-methods.js"></script>
 <script type="text/javascript" src="${basePath}/lib/jquery.validation/1.14.0/messages_zh.js"></script>

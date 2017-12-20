@@ -67,10 +67,10 @@
                 <li><a data-href="${basePath}/medicineList" data-title="药品列表" href="javascript:void(0)">药品列表</a></li>
             </ul>
             <ul>
-                <li><a data-href="${basePath}/medicineList" data-title="入库" href="javascript:void(0)">入库</a></li>
+                <li><a data-href="${basePath}/input" data-title="入库" href="javascript:void(0)">入库</a></li>
             </ul>
             <ul>
-                <li><a data-href="${basePath}/medicineList" data-title="出库" href="javascript:void(0)">出库</a></li>
+                <li><a data-href="${basePath}/output" data-title="出库" href="javascript:void(0)">出库</a></li>
             </ul>
 
         </dd>
