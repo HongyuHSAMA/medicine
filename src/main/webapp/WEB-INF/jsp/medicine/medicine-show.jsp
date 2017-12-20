@@ -2,7 +2,7 @@
 
 <%@ include file="/WEB-INF/jsp/common/_tag.jsp"%>
 <%@ include file="/WEB-INF/jsp/common/_meta.jsp"%>
-<title>图片展示</title>
+<title>药品图片展示</title>
 <link href="lib/lightbox2/2.8.1/css/lightbox.css" rel="stylesheet" type="text/css" >
 </head>
 <body>

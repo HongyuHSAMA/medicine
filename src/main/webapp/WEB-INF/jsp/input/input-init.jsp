@@ -3,107 +3,61 @@
 <%@ include file="/WEB-INF/jsp/common/_tag.jsp"%>
 <%@ include file="/WEB-INF/jsp/common/_meta.jsp"%>
 
-<title>新增药品</title>
+<title>入库</title>
 <link href="${basePath}/lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div class="page-container">
 	<form class="form form-horizontal" id="form-article-add">
+
+
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>药品名称:</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="" name="">
+				<span class="select-box">
+				<select name="" class="select">
+					<option value="0">888</option>
+					<option value="1">999</option>
+				</select>
+				</span>
 			</div>
 		</div>
 
+
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>国药准字:</label>
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>数量(盒):</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<input type="text" class="input-text" value="" placeholder="" id="" name="">
 			</div>
 		</div>
 
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>药品分类:</label>
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>入库日期:</label>
+			<div class=" formControls col-xs-8 col-sm-9">
+				<input type="text" onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd' })" id="logmin" class="input-text Wdate" style="width:120px;">
+			</div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>经手人:</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<span class="select-box">
 				<select name="" class="select">
-					<option value="0">Rx</option>
-					<option value="1">OTC</option>
+					<option value="0">aab</option>
+					<option value="1">abb</option>
 				</select>
 				</span>
 			</div>
 		</div>
 
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>供应商:</label>
-            <div class="formControls col-xs-8 col-sm-9">
-				<span class="select-box">
-				<select name="" class="select">
-					<option value="0">aaa</option>
-					<option value="1">xxx</option>
-				</select>
-				</span>
-            </div>
-        </div>
-
-
-
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>生产日期:</label>
-                 <div class=" formControls col-xs-8 col-sm-9">
-                     <input type="text" onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd' })" id="logmin" class="input-text Wdate" style="width:120px;">
-                     <%--<input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'logmax\')||\'%y-%M-%d\'}' })" id="logmin" class="input-text Wdate" style="width:120px;">--%>
-                     <%--<input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'logmin\')}',maxDate:'%y-%M-%d' })" id="logmax" class="input-text Wdate" style="width:120px;">--%>
-                 </div>
-		</div>
-
-
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>保质期(年):</label>
-            <div class="formControls col-xs-8 col-sm-9">
-				<span class="select-box">
-				<select name="" class="select">
-					<option value="0">1</option>
-					<option value="1">2</option>
-					<option value="2">3</option>
-				</select>
-				</span>
-            </div>
-        </div>
-
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>预警数量(盒):</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="" name="">
-            </div>
-        </div>
-
-
-
-
-
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>图片上传：</label>
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>进价(元/盒):</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<div class="uploader-list-container"> 
-					<div class="queueList">
-						<div id="dndArea" class="placeholder">
-							<div id="filePicker-2"></div>
-							<p>或将照片拖到这里，单次最多可选300张</p>
-						</div>
-					</div>
-					<div class="statusBar" style="display:none;">
-						<div class="progress"> <span class="text">0%</span> <span class="percentage"></span> </div>
-						<div class="info"></div>
-						<div class="btns">
-							<div id="filePicker2"></div>
-							<div class="uploadBtn">开始上传</div>
-						</div>
-					</div>
-				</div>
+				<input type="text" class="input-text" value="" placeholder="" id="" name="">
 			</div>
 		</div>
+
+
 
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
