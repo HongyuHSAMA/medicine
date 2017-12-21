@@ -8,32 +8,33 @@
 </head>
 <body>
 <div class="page-container">
-	<form class="form form-horizontal" id="form-article-add">
+	<form class="form form-horizontal" id="form-medicine-add" method="post" action="${basePath}/medicineAddSubmit" >
+        <%--<form class="form form-horizontal" id="form-medicine-add" method="post" action="${basePath}/medicineAddSubmit" enctype="multipart/form-data">--%>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>药品名称:</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="" name="">
+				<input type="text" class="input-text"  name="medicineName">
 			</div>
 		</div>
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>国药准字:</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="" name="">
+				<input type="text" class="input-text"  name="medicinePermitment">
 			</div>
 		</div>
 
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>药品分类:</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<span class="select-box">
-				<select name="" class="select">
-					<option value="0">Rx</option>
-					<option value="1">OTC</option>
-				</select>
-				</span>
-			</div>
-		</div>
+		<%--<div class="row cl">--%>
+			<%--<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>药品分类:</label>--%>
+			<%--<div class="formControls col-xs-8 col-sm-9">--%>
+				<%--<span class="select-box">--%>
+				<%--<select name="" class="select">--%>
+					<%--<option value="0">Rx</option>--%>
+					<%--<option value="1">OTC</option>--%>
+				<%--</select>--%>
+				<%--</span>--%>
+			<%--</div>--%>
+		<%--</div>--%>
 
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>供应商:</label>
@@ -52,7 +53,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>生产日期:</label>
                  <div class=" formControls col-xs-8 col-sm-9">
-                     <input type="text" onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd' })" id="logmin" class="input-text Wdate" style="width:120px;">
+                     <input type="text" name="productionStringDate" onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd' })" id="logmin" class="input-text Wdate" style="width:120px;">
                      <%--<input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'logmax\')||\'%y-%M-%d\'}' })" id="logmin" class="input-text Wdate" style="width:120px;">--%>
                      <%--<input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'logmin\')}',maxDate:'%y-%M-%d' })" id="logmax" class="input-text Wdate" style="width:120px;">--%>
                  </div>
@@ -63,23 +64,28 @@
             <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>保质期(年):</label>
             <div class="formControls col-xs-8 col-sm-9">
 				<span class="select-box">
-				<select name="" class="select">
-					<option value="0">1</option>
-					<option value="1">2</option>
-					<option value="2">3</option>
+				<select name="expirationIntegerDate" class="select">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
 				</select>
 				</span>
             </div>
         </div>
 
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>预警数量(盒):</label>
+            <label class="form-label col-xs-4 col-sm-2">预警数量(盒):</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="" name="">
+                <input type="text" class="input-text"  name="">
             </div>
         </div>
 
-
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>描述信息:</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text"  name="description">
+            </div>
+        </div>
 
 
 
@@ -89,7 +95,7 @@
 				<div class="uploader-list-container"> 
 					<div class="queueList">
 						<div id="dndArea" class="placeholder">
-							<div id="filePicker-2"></div>
+							<div id="filePicker-2" ></div>
 							<p>或将照片拖到这里，单次最多可选300张</p>
 						</div>
 					</div>
@@ -107,7 +113,7 @@
 
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-				<button onClick="article_save_submit();" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 提交</button>
+				<button onClick="medicine_add_submit();" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 提交</button>
 				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
 			</div>
 		</div>
@@ -135,6 +141,12 @@ function article_save(){
 	alert("刷新父级的时候会自动关闭弹层。")
 	window.parent.location.reload();
 }
+
+function medicine_add_submit() {
+    $("#form-medicine-add").submit()
+
+}
+
 
 $(function(){
 	$('.skin-minimal input').iCheck({
@@ -458,7 +470,7 @@ $(function(){
 
         // 当有文件添加进来时执行，负责view的创建
         function addFile( file ) {
-            var $li = $( '<li id="' + file.id + '">' +
+            var $li = $( '<li id="' + file.id + '" +>' +
                     '<p class="title">' + file.name + '</p>' +
                     '<p class="imgWrap"></p>'+
                     '<p class="progress"><span></span></p>' +
@@ -497,6 +509,7 @@ $(function(){
                 $wrap.text( '预览中' );
                 uploader.makeThumb( file, function( error, src ) {
                     var img;
+					var oInput;
 
                     if ( error ) {
                         $wrap.text( '不能预览' );
@@ -504,8 +517,9 @@ $(function(){
                     }
 
                     if( isSupportBase64 ) {
-                        img = $('<img src="'+src+'">');
-                        $wrap.empty().append( img );
+                        img = $('<img src="'+src+'"' +  '>' );
+                        oInput = $('<input name="imgFile" type="hidden" value="' + src + '"' + '>');
+                        $wrap.empty().append( img ).append(oInput);
                     } else {
                         $.ajax('lib/webuploader/0.1.5/server/preview.php', {
                             method: 'POST',

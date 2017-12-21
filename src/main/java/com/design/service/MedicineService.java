@@ -30,5 +30,26 @@ public interface MedicineService {
      */
     List<Medicine> getMedicineByKeyword(String keyword);
 
+    /**
+     * 插入新的药品元组
+     * @param medicine
+     * @return
+     */
+    boolean insertNewMedicine(Medicine medicine);
+
+
+    /**
+     * 对上传的图片编码进行处理
+     * @param medicine
+     * @return
+     */
+    boolean pictureHandler(Medicine medicine);
+
+
+    /**
+     * 初始化药品列表
+     * @return
+     */
+    List<Medicine> initList();
 
 }

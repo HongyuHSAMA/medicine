@@ -41,7 +41,6 @@
 					<th width="90">国药准字</th>
 					<th width="150">图片</th>
 					<th width="100">药品名称</th>
-					<th width="100">分类</th>
 					<th width="80">供应商</th>
 					<th width="120">过期日期</th>
 					<th width="100">库存数量(盒)</th>
@@ -49,39 +48,28 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="text-c">
-					<td><input name="" type="checkbox" value=""></td>
-					<td>aa1</td>
-					<td><a href="javascript:;" onClick="picture_edit('图库编辑','${basePath}/medicineShow','10001')"><img width="210" class="picture-thumb" src="temp/200x150.jpg"></a></td>
-					<td>999</td>
-					<td>OTC</td>
-					<td>999</td>
-					<td>2014-6-11 11:11:42</td>
-					<td>99999</td>
-					<td class="td-manage"><a style="text-decoration:none" onClick="picture_stop(this,'10001')" href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a> <a style="text-decoration:none" class="ml-5" onClick="picture_edit('图库编辑','picture-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="picture_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
-				</tr>
-				<tr class="text-c">
-					<td><input name="" type="checkbox" value=""></td>
-					<td>001</td>
-					<td><a href="javascript:;" onClick="picture_edit('图库编辑','${basePath}/medicineShow','10001')"><img width="210" class="picture-thumb" src="temp/200x150.jpg"></a></td>
-					<td>999</td>
-					<td>OTC</td>
-					<td>999</td>
-					<td>2014-6-11 11:11:42</td>
-					<td>99999</td>
-					<td class="td-manage"><a style="text-decoration:none" onClick="picture_stop(this,'10001')" href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a> <a style="text-decoration:none" class="ml-5" onClick="picture_edit('图库编辑','picture-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="picture_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
-				</tr>
-				<tr class="text-c">
-					<td><input name="" type="checkbox" value=""></td>
-					<td>001</td>
-					<td><a href="javascript:;" onClick="picture_edit('图库编辑','${basePath}/medicineShow','10001')"><img width="210" class="picture-thumb" src="temp/200x150.jpg"></a></td>
-					<td>999</td>
-					<td>OTC</td>
-					<td>888</td>
-					<td>2014-6-11 11:11:42</td>
-					<td>99999</td>
-					<td class="td-manage"><a style="text-decoration:none" onClick="picture_stop(this,'10001')" href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a> <a style="text-decoration:none" class="ml-5" onClick="picture_edit('图库编辑','picture-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="picture_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
-				</tr>
+				<%--<tr class="text-c">--%>
+					<%--<td><input name="" type="checkbox" value=""></td>--%>
+					<%--<td>aa1</td>--%>
+					<%--<td><a href="javascript:;" onClick="picture_edit('图库编辑','${basePath}/medicineShow','10001')"><img width="210" class="picture-thumb" src="temp/200x150.jpg"></a></td>--%>
+					<%--<td>999</td>--%>
+					<%--<td>999</td>--%>
+					<%--<td>2014-6-11 11:11:42</td>--%>
+					<%--<td>99999</td>--%>
+					<%--<td class="td-manage"><a style="text-decoration:none" onClick="picture_stop(this,'10001')" href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a> <a style="text-decoration:none" class="ml-5" onClick="picture_edit('图库编辑','picture-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="picture_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>--%>
+				<%--</tr>--%>
+				<c:forEach items="${medicineList}" var="item" varStatus="s">
+					<tr class="text-c">
+						<td><input name="" type="checkbox" value=""></td>
+						<td>${item.medicinePermitment}</td>
+						<td><a href="javascript:;" onClick="picture_edit('图库编辑','${basePath}/medicineShow','10001')"><img width="210" class="picture-thumb" src="${item.imgUrl}"></a></td>
+						<td>${item.medicineName}</td>
+						<td>${item.supplierName}</td>
+						<td>${item.expirationStringDate}</td>
+						<td>${item.medicineNumber}</td>
+						<td class="td-manage"><a style="text-decoration:none" onClick="picture_stop(this,'10001')" href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a> <a style="text-decoration:none" class="ml-5" onClick="picture_edit('图库编辑','picture-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="picture_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>
@@ -101,7 +89,7 @@ $('.table-sort').dataTable({
 	"bStateSave": true,//状态保存
 	"aoColumnDefs": [
 	  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-	  {"orderable":false,"aTargets":[0,8]}// 制定列不参与排序
+	  {"orderable":false,"aTargets":[0,7]}// 制定列不参与排序
 	]
 });
 

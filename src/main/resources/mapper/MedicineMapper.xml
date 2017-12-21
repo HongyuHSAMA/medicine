@@ -28,8 +28,8 @@
     </update>
 
     <insert id="addMedicine">
-        INSERT INTO medicine(medicine_name, medicine_number,production_date,expiration_date, price, medicine_permitment, description, picture, medicine_supplier_id)
-        VALUE (#{medicineName},#{medicineNumber},#{productionDate},#{expirationDate},#{price},#{medicinePermiment},#{description},#{picture},#{warningNumber})
+        INSERT INTO medicine(medicine_name, medicine_number,production_date,expiration_date, medicine_permitment, description, picture, medicine_supplier_id)
+        VALUE (#{medicineName},#{medicineNumber},#{productionDate},#{expirationDate},#{medicinePermitment},#{description},#{picture},#{warningNumber})
     </insert>
 
     <select id="queryMedicineNumber" resultType="int" >
@@ -38,8 +38,9 @@
 
     <select id="queryAll" resultType="com.design.entity.Medicine">
 
-        SELECT * FROM medicine AS m
-        ORDER BY m.medicine_id
+        SELECT medicine_id,medicine_name,medicine_permitment,picture,
+        supplier_name,expiration_date
+        FROM medicine,supplier WHERE medicine_supplier_id = supplier_id
 
     </select>
 

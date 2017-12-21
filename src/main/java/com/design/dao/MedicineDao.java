@@ -43,12 +43,7 @@ public interface MedicineDao {
      * @param warningNumber
      * @return
      */
-    boolean addMedicine(@Param("medicineName") String medicineName, @Param("medicineNumber")int medicineNumber,
-                        @Param("productionDate") Date productionDate, @Param("expirationDate")Date expirationDate,
-                        @Param("price") int price, @Param("medicinePermiment")String medicinePermiment,
-                        @Param("description")String description, @Param("picture")String  picture,
-                        @Param("warningNumber") int warningNumber,
-                        @Param( "medicineSupplierId" ) String medicineSupplierId);
+    boolean addMedicine(Medicine medicine);
 
     /**
      * 查询药库里药品的种类
@@ -85,5 +80,8 @@ public interface MedicineDao {
                             @Param("description")String description, @Param("picture")String picture,
                             @Param( "medicineSupplierId" ) int medicineSupplierId
                             );
+
+
+
 
 }
