@@ -17,13 +17,15 @@
 		<%--<button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜图片</button>--%>
 	<%--</div>--%>
 
+        <%--<input type="hidden" name="message" value="${message.msg}"/>--%>
+
 	<div class="cl pd-5 bg-1 bk-gray mt-20">
 		<span class="l">
 
-			<a class="btn btn-primary radius" onclick="picture_add('添加图片','${basePath}/medicineAdd')" href="javascript:;">
+			<a class="btn btn-primary radius" onclick="picture_add('添加药品','${basePath}/medicineAdd')" href="javascript:;">
 				<i class="Hui-iconfont">&#xe600;</i> 添加药品
 			</a>
-			<a class="btn btn-primary radius" onclick="picture_add('添加图片','${basePath}/supplierAdd')" href="javascript:;">
+			<a class="btn btn-primary radius" onclick="picture_add('添加供应商','${basePath}/supplierAdd')" href="javascript:;">
 				<i class="Hui-iconfont">&#xe600;</i> 添加供应商
 			</a>
 		</span>
@@ -62,7 +64,7 @@
 					<tr class="text-c">
 						<td><input name="" type="checkbox" value=""></td>
 						<td>${item.medicinePermitment}</td>
-						<td><a href="javascript:;" onClick="picture_edit('图库编辑','${basePath}/medicineShow','10001')"><img width="210" class="picture-thumb" src="${item.imgUrl}"></a></td>
+						<td><a href="javascript:;" onClick="picture_edit('药品编辑','${basePath}/medicineShow','10001')"><img width="210" class="picture-thumb" src="${item.imgUrl}"></a></td>
 						<td>${item.medicineName}</td>
 						<td>${item.supplierName}</td>
 						<td>${item.expirationStringDate}</td>
@@ -92,6 +94,25 @@ $('.table-sort').dataTable({
 	  {"orderable":false,"aTargets":[0,7]}// 制定列不参与排序
 	]
 });
+
+//$(function () {
+//
+//    var message = $("#message").val()
+//    if (message == null) {
+//        return
+//    }
+//    window.parent.location.reload();
+//    layer.open({
+//        type: 1,
+//        area: ['300px', '200px'],
+//        fix: false, //不固定
+//        maxmin: true,
+//        shade: 0.4,
+//        title: message,
+//        content: message
+//    });
+//})
+
 
 /*图片-添加*/
 function picture_add(title,url){

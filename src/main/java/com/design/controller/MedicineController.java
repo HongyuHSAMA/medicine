@@ -1,21 +1,14 @@
 package com.design.controller;
 
-import ch.qos.logback.core.util.FileUtil;
 import com.design.dao.MedicineDao;
 import com.design.entity.Medicine;
+import com.design.entity.Message;
 import com.design.service.MedicineService;
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
 
-import java.io.File;
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -64,7 +57,7 @@ public class MedicineController {
     @RequestMapping("/medicineAdd")
     public ModelAndView medicineAdd(ModelAndView modelAndView) {
 
-
+        modelAndView.addObject("suppliers",medicineService.queryAllSupplier());
 
         modelAndView.setViewName("medicine/medicine-add");
         return modelAndView;
@@ -98,9 +91,31 @@ public class MedicineController {
 
         if (medicineService.pictureHandler(medicine)) {
 
-            medicineService.insertNewMedicine(medicine);
+
+            if (medicineService.insertNewMedicine(medicine)) {
+                modelAndView.addObject(Message.statusMsg,Message.ADD_SUCCESS);
+            } else {
+                modelAndView.addObject(Message.statusMsg,Message.ADD_FAIL);
+            }
+
+        } else {
+            modelAndView.addObject(Message.statusMsg,Message.ADD_FAIL);
         }
 
+
+        modelAndView.addObject("medicineList",medicineService.initList());
+
+        modelAndView.setViewName("medicine/medicine-message");
+
+
+        return modelAndView;
+    }
+
+
+    @RequestMapping("/test1")
+    public ModelAndView test11(ModelAndView modelAndView) {
+
+        modelAndView.setViewName("medicine/medicine-message");
 
         return modelAndView;
     }

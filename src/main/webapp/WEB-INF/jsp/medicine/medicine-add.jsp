@@ -40,9 +40,10 @@
             <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>供应商:</label>
             <div class="formControls col-xs-8 col-sm-9">
 				<span class="select-box">
-				<select name="" class="select">
-					<option value="0">aaa</option>
-					<option value="1">xxx</option>
+				<select name="medicineSupplierId" class="select">
+					<c:forEach items="${suppliers}" var="item" varStatus="s">
+                        <option value="${item.supplierId}">${item.supplierName}</option>
+                    </c:forEach>
 				</select>
 				</span>
             </div>

@@ -7,4 +7,10 @@
         INSERT INTO supplier(supplier_name, supplier_picture)
             VALUE(#{suppllierName},#{supplierPicture})
     </insert>
+
+    <select id="selectAllSupplier" resultType="Supplier">
+        SELECT supplier_id,supplier_name FROM supplier
+    </select>
+
+
 </mapper>

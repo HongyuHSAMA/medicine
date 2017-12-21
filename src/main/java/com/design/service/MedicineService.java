@@ -1,6 +1,7 @@
 package com.design.service;
 
 import com.design.entity.Medicine;
+import com.design.entity.Supplier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -51,5 +52,11 @@ public interface MedicineService {
      * @return
      */
     List<Medicine> initList();
+
+    /**
+     * 查询所有供应商
+     * @return
+     */
+    List<Supplier> queryAllSupplier();
 
 }
