@@ -1,7 +1,9 @@
 package com.design.service.impl;
 
 import com.design.dao.MedicineDao;
+import com.design.dao.SupplierDao;
 import com.design.entity.Medicine;
+import com.design.entity.Supplier;
 import com.design.service.MedicineService;
 import com.github.pagehelper.PageHelper;
 import org.apache.commons.io.FileUtils;
@@ -22,6 +24,8 @@ public class MedicineServiceImpl implements MedicineService {
     @Autowired
     private MedicineDao medicineDao;
 
+    @Autowired
+    private SupplierDao supplierDao;
 
     @Value("${medicineImage.savePath}")
     private String medicineImageSavePath;
@@ -66,8 +70,11 @@ public class MedicineServiceImpl implements MedicineService {
     @Override
     public boolean insertNewMedicine(Medicine medicine) {
 
-        medicineDao.addMedicine(medicine);
-        return false;
+        if (medicineDao.addMedicine(medicine)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -79,9 +86,13 @@ public class MedicineServiceImpl implements MedicineService {
         if (d != null && d.length == 2) {
             dataPrix = d[0];
             data = d[1];
+        } else {
+            return false;
         }
         if ("data:image/jpeg;".equalsIgnoreCase(dataPrix)) {
             dataPrix = ".jpeg";
+        } else {
+            return false;
         }
 
         byte[] bytes = Base64Utils.decodeFromString(data);
@@ -114,6 +125,13 @@ public class MedicineServiceImpl implements MedicineService {
 
 
         return medicineList;
+    }
+
+    @Override
+    public List<Supplier> queryAllSupplier() {
+
+        return supplierDao.selectAllSupplier();
+
     }
 
 

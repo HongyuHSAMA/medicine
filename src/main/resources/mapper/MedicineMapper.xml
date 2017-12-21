@@ -28,8 +28,9 @@
     </update>
 
     <insert id="addMedicine">
-        INSERT INTO medicine(medicine_name, medicine_number,production_date,expiration_date, medicine_permitment, description, picture, medicine_supplier_id)
-        VALUE (#{medicineName},#{medicineNumber},#{productionDate},#{expirationDate},#{medicinePermitment},#{description},#{picture},#{warningNumber})
+        INSERT INTO medicine(medicine_name, medicine_number,production_date,expiration_date, medicine_permitment, description, picture, warning_number,medicine_supplier_id)
+        VALUE (#{medicineName},#{medicineNumber},#{productionDate},#{expirationDate},#{medicinePermitment},#{description},#{picture},#{warningNumber},#{medicineSupplierId})
+
     </insert>
 
     <select id="queryMedicineNumber" resultType="int" >

@@ -7,13 +7,7 @@ import lombok.ToString;
 @ToString
 public class Supplier {
 
-    @Getter
-    @Setter
-    private long supplierId;
-    @Getter
-    @Setter
-    private String supplierName;
-    @Getter
-    @Setter
-    private String supplierPicture;
+    @Getter @Setter private long supplierId;
+    @Getter @Setter private String supplierName;
+    @Getter @Setter private String supplierPicture;
 }
