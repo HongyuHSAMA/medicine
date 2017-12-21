@@ -1,21 +1,45 @@
 package com.design.controller;
 
+import ch.qos.logback.core.util.FileUtil;
+import com.design.dao.MedicineDao;
+import com.design.entity.Medicine;
+import com.design.service.MedicineService;
+import org.apache.commons.io.FileUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 @RestController
-
 public class MedicineController {
-    @RequestMapping(value = "/index")
-        public ModelAndView test1() {
-            ModelAndView modelAndView = new ModelAndView();
-            modelAndView.setViewName("index");
+
+    @Autowired
+    private MedicineService medicineService;
 
 
-            return modelAndView;
-        }
+    @Autowired
+    private MedicineDao medicineDao;
+
+
+    @RequestMapping("/index")
+    public ModelAndView test1() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("index");
+
+        return modelAndView;
+    }
 
     @RequestMapping("/welcome")
     public ModelAndView welcome() {
@@ -27,11 +51,21 @@ public class MedicineController {
 
     @RequestMapping("/medicineList")
     public ModelAndView medicineList(ModelAndView modelAndView) {
+
+
+
+        modelAndView.addObject("medicineList",medicineService.initList());
+
+
+
         modelAndView.setViewName("medicine/medicine-list");
         return modelAndView;
     }
     @RequestMapping("/medicineAdd")
     public ModelAndView medicineAdd(ModelAndView modelAndView) {
+
+
+
         modelAndView.setViewName("medicine/medicine-add");
         return modelAndView;
     }
@@ -40,4 +74,57 @@ public class MedicineController {
         modelAndView.setViewName("medicine/medicine-show");
         return modelAndView;
     }
+
+    @RequestMapping("/medicineAddSubmit")
+    public ModelAndView medicineAddSubmit(ModelAndView modelAndView, Medicine medicine) throws ParseException {
+
+        //将字符串换成Date
+        Date dateTemp = new SimpleDateFormat("yyyy-MM-dd").parse(medicine.getProductionStringDate());
+
+
+        medicine.setProductionDate(dateTemp);
+
+        //生产日期+保质期=过期日期
+        GregorianCalendar gregorianCalendar = new GregorianCalendar();
+        gregorianCalendar.setTime(dateTemp);
+        gregorianCalendar.add(1,medicine.getExpirationIntegerDate());
+        gregorianCalendar.set(gregorianCalendar.get(Calendar.YEAR),gregorianCalendar.get(Calendar.MONTH),gregorianCalendar.get(Calendar.DATE));
+
+        //设置过期日期
+        dateTemp = gregorianCalendar.getTime();
+        medicine.setExpirationDate(dateTemp);
+
+
+
+        if (medicineService.pictureHandler(medicine)) {
+
+            medicineService.insertNewMedicine(medicine);
+        }
+
+
+        return modelAndView;
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

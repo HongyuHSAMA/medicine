@@ -9,11 +9,11 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginAndLogoutController {
 
     @RequestMapping("/")
-    public ModelAndView welcome( ){
+    public ModelAndView welcome(){
 
-        ModelAndView modelAndView = new ModelAndView(  );
+        ModelAndView modelAndView = new ModelAndView();
 
-        modelAndView.setViewName( "login" );
+        modelAndView.setViewName("login");
 
         return modelAndView;
 
