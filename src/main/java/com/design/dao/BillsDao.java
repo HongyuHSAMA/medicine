@@ -13,18 +13,10 @@ public interface BillsDao {
     /**
      * 添加账单
      *
-     * @param createTime
-     * @param billMedicineId
-     * @param billMedicineNumber
-     * @param billMedicinePrice
-     * @param billWorkerId
-     * @param billCustomer
+     * @param bills
      * @return
      */
-    boolean addBill(@Param("createTime") Date createTime, @Param("billMedicineId") long billMedicineId,
-                    @Param("billMedicineNumber") int billMedicineNumber,
-                    @Param("billMedicinePrice") int billMedicinePrice, @Param("billWorkerId") long billWorkerId,
-                    @Param("billCustomer") String billCustomer);
+    boolean addBill(Bills bills);
 
     /**
      * 根据偏移量查询账单数据

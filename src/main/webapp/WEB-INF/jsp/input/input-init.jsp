@@ -8,16 +8,16 @@
 </head>
 <body>
 <div class="page-container">
-	<form class="form form-horizontal" id="form-article-add">
-
+	<form class="form form-horizontal" id="form-input" action="${basePath}/inputSubmit" method="post" >
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>药品名称:</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<span class="select-box">
-				<select name="" class="select">
-					<option value="0">888</option>
-					<option value="1">999</option>
+				<select name="replenishMedicineId" class="select">
+                    <c:forEach items="${medicines}" var="item" varStatus="s">
+						<option value="${item.medicineId}">${item.medicineName}</option>
+					</c:forEach>
 				</select>
 				</span>
 			</div>
@@ -27,14 +27,14 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>数量(盒):</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="" name="">
+				<input type="text" class="input-text" name="replenishMedicineNumber">
 			</div>
 		</div>
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>入库日期:</label>
 			<div class=" formControls col-xs-8 col-sm-9">
-				<input type="text" onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd' })" id="logmin" class="input-text Wdate" style="width:120px;">
+				<input type="text" name="createStringTime" onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd' })" id="logmin" class="input-text Wdate" style="width:120px;">
 			</div>
 		</div>
 
@@ -42,9 +42,10 @@
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>经手人:</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<span class="select-box">
-				<select name="" class="select">
-					<option value="0">aab</option>
-					<option value="1">abb</option>
+				<select name="replenishWorkerId" class="select">
+                    <c:forEach items="${workers}" var="item" varStatus="s">
+						<option value="${item.workerId}">${item.workerName}</option>
+					</c:forEach>
 				</select>
 				</span>
 			</div>
@@ -53,7 +54,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>进价(元/盒):</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="" name="">
+				<input type="text" class="input-text" name="replenishMedicinePrice">
 			</div>
 		</div>
 
@@ -61,7 +62,7 @@
 
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-				<button onClick="article_save_submit();" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 提交</button>
+				<button onClick="input_submit()" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 提交</button>
 				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
 			</div>
 		</div>
@@ -88,6 +89,10 @@
 function article_save(){
 	alert("刷新父级的时候会自动关闭弹层。")
 	window.parent.location.reload();
+}
+
+function input_submit() {
+	$("#form-input").submit()
 }
 
 $(function(){

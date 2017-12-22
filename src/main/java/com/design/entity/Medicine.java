@@ -12,15 +12,15 @@ import java.util.Date;
 public class Medicine {
 
     //表属性
-    @Getter @Setter private long medicineId;//药品库存id
+    @Getter @Setter private Long medicineId;//药品库存id
     @Getter @Setter private String medicineName;//药品名称
-    @Getter @Setter private int medicineNumber;//库存数量
+    @Getter @Setter private Integer medicineNumber;//库存数量
     @Getter @Setter private Date productionDate;//生产日期
     @Getter @Setter private Date expirationDate;//保质期 // 过期日期
     @Getter @Setter private String medicinePermitment;//国药准字
     @Getter @Setter private String description;//description
     @Getter @Setter private String picture;//图片名
-    @Getter @Setter private int warningNumber;//预警数量线
+    @Getter @Setter private Integer warningNumber;//预警数量线
     @Getter @Setter private Long medicineSupplierId;//供应商id
 
 

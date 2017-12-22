@@ -71,10 +71,22 @@ public class MedicineController {
     @RequestMapping("/medicineAddSubmit")
     public ModelAndView medicineAddSubmit(ModelAndView modelAndView, Medicine medicine) throws ParseException {
 
+        if ("".equals(medicine.getProductionStringDate()) || medicine.getProductionStringDate() == null) {
+            modelAndView.addObject(Message.statusMsg,Message.DATE_ERROR);
+            modelAndView.addObject("medicineList",medicineService.initList());
+            modelAndView.setViewName("medicine/medicine-message");
+            return modelAndView;
+        }
+        if ("".equals(medicine.getImgFile()) || medicine.getImgFile() == null) {
+            modelAndView.addObject(Message.statusMsg,Message.PICTURE_ERROR);
+            modelAndView.addObject("medicineList",medicineService.initList());
+            modelAndView.setViewName("medicine/medicine-message");
+            return modelAndView;
+        }
+
+
         //将字符串换成Date
         Date dateTemp = new SimpleDateFormat("yyyy-MM-dd").parse(medicine.getProductionStringDate());
-
-
         medicine.setProductionDate(dateTemp);
 
         //生产日期+保质期=过期日期
@@ -88,9 +100,8 @@ public class MedicineController {
         medicine.setExpirationDate(dateTemp);
 
 
-
+        //图片处理
         if (medicineService.pictureHandler(medicine)) {
-
 
             if (medicineService.insertNewMedicine(medicine)) {
                 modelAndView.addObject(Message.statusMsg,Message.ADD_SUCCESS);
@@ -106,8 +117,6 @@ public class MedicineController {
         modelAndView.addObject("medicineList",medicineService.initList());
 
         modelAndView.setViewName("medicine/medicine-message");
-
-
         return modelAndView;
     }
 

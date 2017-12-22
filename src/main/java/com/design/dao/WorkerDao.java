@@ -1,7 +1,10 @@
 package com.design.dao;
 
+import com.design.entity.Worker;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface WorkerDao {
@@ -12,4 +15,7 @@ public interface WorkerDao {
      * @return
      */
     boolean queryById(@Param("workerId") int workerId);
+
+
+    List<Worker> queryAllWorkerNameAndId();
 }

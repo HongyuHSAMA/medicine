@@ -1,5 +1,6 @@
 package com.design.dao;
 
+import com.design.entity.Medicine;
 import com.design.entity.Replenish;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -35,4 +36,10 @@ public interface ReplenishDao {
      * @return
      */
     List<Replenish> queryAll(@Param("offset") int offset, @Param("limit") int limit);
+
+
+    List<Medicine> queryAllMedicine();
+
+
+    boolean insertReplenish(Replenish replenish);
 }

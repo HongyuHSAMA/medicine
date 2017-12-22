@@ -8,6 +8,6 @@ import lombok.ToString;
 public class Worker {
 
     @Getter @Setter private String workerName;
-    @Getter @Setter private int workerId;
+    @Getter @Setter private Integer workerId;
     @Getter @Setter  private String workerPassword;
 }
