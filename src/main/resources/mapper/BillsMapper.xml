@@ -11,8 +11,8 @@
     * @param
     * @param billCustomer-->
     <insert id="addBill">
-        INSERT INTO bills(create_time, bill_medicine_id, bill_medicine_number, bill_medicine_price, bill_worker_id, bill_customer,medicine_supplier_id)
-                VALUE (#{createTime},#{billMedicineId},#{billMedicineNumber},#{billMedicinePrice},#{billWorkerId},#{billCustomer},#{medicineSupplierId})
+        INSERT INTO bills(create_time, bill_medicine_id, bill_medicine_number, bill_medicine_price, bill_worker_id, bill_customer)
+                VALUE (#{createTime},#{billMedicineId},#{billMedicineNumber},#{billMedicinePrice},#{billWorkerId},#{billCustomer})
     </insert>
 
     <select id="queryAll" resultType="com.design.entity.Bills" parameterType="int">

@@ -21,4 +21,14 @@
         LIMIT #{offset},#{limit}
     </select>
 
+    <select id="queryAllMedicine" resultType="Medicine">
+        SELECT medicine_name,medicine_id FROM medicine
+    </select>
+
+    <insert id="insertReplenish" parameterType="Replenish">
+        INSERT replenish(replenish_medicine_id,replenish_medicine_number,create_time,replenish_worker_id,replenish_medicine_price)
+                VALUE (#{replenishMedicineId},#{replenishMedicineNumber},#{createTime},#{replenishWorkerId},#{replenishMedicinePrice})
+    </insert>
+
+
 </mapper>
