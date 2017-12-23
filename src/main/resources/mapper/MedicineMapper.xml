@@ -4,9 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.design.dao.MedicineDao">
 
-    <delete id="deleteById" parameterType="long">
+    <delete id="deleteById" >
         DELETE FROM medicine
-        WHERE medicine_id=#{medicine}
+        WHERE medicine_id=#{medicineId}
     </delete>
 
     <select id="queryByKeyword" parameterType="String" resultType="com.design.entity.Medicine">
@@ -40,7 +40,7 @@
     <select id="queryAll" resultType="com.design.entity.Medicine">
 
         SELECT medicine_id,medicine_name,medicine_permitment,picture,
-        supplier_name,expiration_date
+        supplier_name,expiration_date,medicine_number
         FROM medicine,supplier WHERE medicine_supplier_id = supplier_id
 
     </select>

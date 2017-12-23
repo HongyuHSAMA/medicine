@@ -21,7 +21,11 @@ public interface MedicineDao {
      * @param medicineId
      * @return
      */
-    boolean deleteById(@Param( "medicine" ) long medicineId);
+    boolean deleteById(Long medicineId);
+
+
+
+
     /**
      * 根据关键字模糊查询（对应药品名称和供应商id）
      * @param keyword

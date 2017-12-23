@@ -134,5 +134,12 @@ public class MedicineServiceImpl implements MedicineService {
 
     }
 
+    @Override
+    public boolean deleteMedicineById(Long medicineId) {
+
+
+        return medicineDao.deleteById(medicineId);
+    }
+
 
 }

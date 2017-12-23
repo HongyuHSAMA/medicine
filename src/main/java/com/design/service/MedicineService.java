@@ -59,4 +59,7 @@ public interface MedicineService {
      */
     List<Supplier> queryAllSupplier();
 
+
+    boolean deleteMedicineById(Long medicineId);
+
 }
