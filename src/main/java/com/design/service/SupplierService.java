@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 public interface SupplierService {
 
-
     /**
      * 添加供应商
      */

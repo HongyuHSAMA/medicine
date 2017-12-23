@@ -6,10 +6,7 @@ import com.design.entity.Message;
 import com.design.service.MedicineService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.text.ParseException;
@@ -85,7 +82,6 @@ public class MedicineController {
             return modelAndView;
         }
 
-
         //将字符串换成Date
         Date dateTemp = new SimpleDateFormat("yyyy-MM-dd").parse(medicine.getProductionStringDate());
         medicine.setProductionDate(dateTemp);
@@ -149,11 +145,28 @@ public class MedicineController {
         } catch (Exception e) {
             map.put(Message.statusMsg, Message.DELETE_ERROR.getMsg());
         }
-
-
         return map;
     }
 
+    @RequestMapping("/member-show/{medicineId}")
+    public ModelAndView medicineInfoShow(ModelAndView modelAndView, @PathVariable("medicineId") String medicineId) throws ParseException {
+
+        long medicineIdL = Integer.valueOf( medicineId );
+        Medicine medicine = medicineDao.queryById(  medicineIdL);
+
+        //时间格式转换
+        SimpleDateFormat format = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" );
+
+
+        medicine.setProductionStringDate( format.format( medicine.getProductionDate() ) );
+        medicine.setExpirationStringDate( format.format( medicine.getExpirationDate() ) );
+
+        modelAndView.addObject( "medicine",medicine );
+
+        modelAndView.setViewName( "medicine/medicine-show1" );
+
+        return modelAndView;
+    }
 }
 
 

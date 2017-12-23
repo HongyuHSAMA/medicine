@@ -67,7 +67,7 @@
 					<tr class="text-c">
 						<td><input name="" type="checkbox" value=""></td>
 						<td>${item.medicinePermitment}</td>
-						<td><a href="javascript:;" onClick="picture_edit('药品编辑','${basePath}/medicineShow','10001')"><img width="210" class="picture-thumb" src="${item.imgUrl}"></a></td>
+						<td><a href="javascript:;" onClick="member_show('','member-show/'+${item.medicineId},'10001','360','400')"><img width="210" class="picture-thumb" src="${item.imgUrl}"></a></td>
 						<td>${item.medicineName}</td>
 						<td>${item.supplierName}</td>
 						<td>${item.expirationStringDate}</td>
@@ -115,7 +115,10 @@ $('.table-sort').dataTable({
 //        content: message
 //    });
 //})
-
+/*用户-查看*/
+function member_show(title,url,id,w,h){
+    layer_show(title,url,w,h);
+}
 
 /*图片-添加*/
 function picture_add(title,url){
