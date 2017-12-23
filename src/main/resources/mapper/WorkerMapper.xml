@@ -4,8 +4,16 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.design.dao.WorkerDao">
 
+
     <select id="queryAllWorkerNameAndId" resultType="Worker">
         SELECT worker_id,worker_name FROM worker
+    </select>
+    <select id="queryById" parameterType="long" resultType="com.design.entity.Worker">
+
+        SELECT * FROM worker
+        WHERE worker_id=#{workerId}
+
+
     </select>
 
 </mapper>

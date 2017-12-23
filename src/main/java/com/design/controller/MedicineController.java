@@ -26,13 +26,13 @@ public class MedicineController {
     private MedicineDao medicineDao;
 
 
-    @RequestMapping("/index")
+    /*@RequestMapping("/index")
     public ModelAndView test1() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
 
         return modelAndView;
-    }
+    }*/
 
     @RequestMapping("/welcome")
     public ModelAndView welcome() {

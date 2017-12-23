@@ -14,7 +14,7 @@ public interface WorkerDao {
      * @param workerId
      * @return
      */
-    boolean queryById(@Param("workerId") int workerId);
+    Worker queryById(@Param("workerId") long workerId);
 
 
     List<Worker> queryAllWorkerNameAndId();

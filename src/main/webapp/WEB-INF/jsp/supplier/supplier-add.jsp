@@ -8,13 +8,13 @@
 </head>
 <body>
 <div class="page-container">
-	<form class="form form-horizontal" id="form-article-add">
+	<form class="form form-horizontal" id="form-supplier-add" action="supplierAddSubmit" method="post">
 
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>供应商名称:</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="" name="">
+				<input type="text" class="input-text" value="" placeholder="" id="" name="supplierName">
 			</div>
 		</div>
 
@@ -45,7 +45,7 @@
 
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-				<button onClick="article_save_submit();" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 提交</button>
+				<button onClick="supplier_save_submit();" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 提交</button>
 				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
 			</div>
 		</div>
@@ -66,6 +66,10 @@
 <script type="text/javascript" src="${basePath}/lib/webuploader/0.1.5/webuploader.min.js"></script>
 
 <script type="text/javascript">
+
+	function supplier_save_submit() {
+		$('#form-supplier-add').submit();
+    }
 function article_save(){
 	alert("刷新父级的时候会自动关闭弹层。")
 	window.parent.location.reload();
@@ -440,7 +444,9 @@ $(function(){
 
                     if( isSupportBase64 ) {
                         img = $('<img src="'+src+'">');
-                        $wrap.empty().append( img );
+                        oInput = $('<input name="imgFile" type="hidden" value="' + src + '"' + '>');
+                        hidenInput = $('<input name="imgFile" type="hidden" value="'+src+'"' +'>');
+                        $wrap.empty().append( img ).append(hidenInput);
                     } else {
                         $.ajax('lib/webuploader/0.1.5/server/preview.php', {
                             method: 'POST',

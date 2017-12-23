@@ -23,9 +23,23 @@
     <link href="${basePath}/static/h-ui.admin/css/H-ui.login.css" rel="stylesheet" type="text/css"/>
     <link href="${basePath}/static/h-ui.admin/css/style.css" rel="stylesheet" type="text/css"/>
     <link href="${basePath}/lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css"/>
+    <link href="${basePath}/lib/jquery.validation/1.14.0/jquery.validate.js"/>
+    <link href="${basePath}/lib/jquery.validation/1.14.0/validate-methods.js"/>
+    <link href="${basePath}/lib/jquery.validation/1.14.0/additional-methods.js"/>
+    <link href="${basePath}/lib/jquery.validation/1.14.0/messages_zh.js"/>
 
 
     <title>后台登录 - H-ui.admin v3.1</title>
+    <script>
+        $.validator.setDefaults({
+            submitHandler: function() {
+                alert("提交事件!");
+            }
+        });
+        $().ready(function() {
+            $("#loginFormH").validate();
+        });
+    </script>
 
 </head>
 <body >
@@ -34,25 +48,27 @@
     <div class="header"></div>
     <div class="loginWraper" >
         <div id="loginform" class="loginBox">
-            <form class="form form-horizontal" action="index" method="post">
+            <form class="form form-horizontal" action="index" method="post" id="loginFormH">
                 <div class="row cl">
                     <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
                     <div class="formControls col-xs-8">
-                        <input id="" name="" type="text" placeholder="账户" class="input-text size-L">
+                        <input id="workerId" name="workerId" type="text" placeholder="账户" class="input-text size-L" value="${worker1.workerId}" required >
                     </div>
                 </div>
                 <div class="row cl">
                     <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60e;</i></label>
                     <div class="formControls col-xs-8">
-                        <input id="" name="" type="password" placeholder="密码" class="input-text size-L">
+                        <input id="workerPassword" name="workerPassword" type="password" placeholder="密码" class="input-text size-L" value="${worker1.workerPassword}" required>
                     </div>
                 </div>
                 <div class="row cl">
                     <div class="formControls col-xs-8 col-xs-offset-3">
-                        <input class="input-text size-L" type="text" placeholder="验证码"
-                               onblur="if(this.value==''){this.value='验证码:'}"
-                               onclick="if(this.value=='验证码:'){this.value='';}" value="验证码:" style="width:150px;">
-                        <img src=""> <a id="kanbuq" href="javascript:;">看不清，换一张</a></div>
+                        <%--&lt;%&ndash;<input class="input-text size-L" type="text" placeholder="验证码"&ndash;%&gt;--%>
+                               <%--&lt;%&ndash;onblur="if(this.value==''){this.value='验证码:'}"&ndash;%&gt;--%>
+                               <%--&lt;%&ndash;onclick="if(this.value=='验证码:'){this.value='';}" value="验证码:" style="width:150px;">&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<img src=""> <a id="kanbuq" href="javascript:;">看不清，换一张</a>--%>
+                        <p id ="messageShow" ></p>
+                    </div>
                 </div>
                 <div class="row cl">
                     <div class="formControls col-xs-8 col-xs-offset-3">
@@ -63,7 +79,7 @@
                 </div>
                 <div class="row cl">
                     <div class="formControls col-xs-8 col-xs-offset-3">
-                        <input name="" type="submit" class="btn btn-success radius size-L"
+                        <input onclick="login_submit" name="" type="submit" class="btn btn-success radius size-L"
                                value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">
                         <input name="" type="reset" class="btn btn-default radius size-L"
                                value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">
@@ -76,6 +92,18 @@
     <script type="text/javascript" src="${basePath}/lib/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="${basePath}/static/h-ui/js/H-ui.min.js"></script>
 
-<script src="/themes/hvt/js/texiao.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var messageShow = $('#messageShow');
+            var message = "${error}";
+            if (message.length != 0) {
+                messageShow.html('<span style="color: red">登录密码或者账户错误</span>');
+                "<% request.removeAttribute("error");%>";
+
+            }
+        });
+
+
+    </script>
 </body>
 </html>
