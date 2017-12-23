@@ -4,16 +4,17 @@ import com.design.dao.MedicineDao;
 import com.design.entity.Medicine;
 import com.design.entity.Message;
 import com.design.service.MedicineService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.*;
 
 @RestController
 public class MedicineController {
@@ -121,12 +122,36 @@ public class MedicineController {
     }
 
 
-    @RequestMapping("/test1")
-    public ModelAndView test11(ModelAndView modelAndView) {
+    @RequestMapping("/medicineDelete")
+    @ResponseBody
+    public Map<String,String> medicineDelete(@RequestBody Medicine medicine) {
 
-        modelAndView.setViewName("medicine/medicine-message");
+//        System.out.println("11111111111111");
+//        System.out.println(medicine);
 
-        return modelAndView;
+
+        Map<String,String> map = new HashMap<>();
+
+
+        Long medicineId = medicine.getMedicineId();
+        try {
+            if (medicineId != null) {
+                if (medicineService.deleteMedicineById(medicineId)) {
+//            if (false) {
+                    map.put(Message.statusMsg, Message.DELETE_SUCCESS.getMsg());
+                } else {
+                    map.put(Message.statusMsg, Message.DELETE_FAIL.getMsg());
+                }
+            } else {
+                map.put(Message.statusMsg, Message.ERROR.getMsg());
+            }
+
+        } catch (Exception e) {
+            map.put(Message.statusMsg, Message.DELETE_ERROR.getMsg());
+        }
+
+
+        return map;
     }
 
 }
