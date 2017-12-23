@@ -10,7 +10,16 @@
 
     <!-- 配置整合mybatis过程 -->
     <!-- 1、配置数据库相关参数 -->
-    <context:property-placeholder location="classpath:*.properties"/>
+    <!--<context:property-placeholder location="classpath:*.properties"/>-->
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <array>
+                <value>classpath:jdbc.properties</value>
+                <value>classpath:service.properties</value>
+            </array>
+        </property>
+    </bean>
 
     <!-- 2、配置数据库连接池 -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">

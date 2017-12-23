@@ -1,4 +1,5 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@ include file="/WEB-INF/jsp/common/_tag.jsp"%>
 <%@ include file="/WEB-INF/jsp/common/_meta.jsp"%>
@@ -18,6 +19,7 @@
 	<%--</div>--%>
 
         <%--<input type="hidden" name="message" value="${message.msg}"/>--%>
+        <input type="hidden" id="path" value="${basePath}"/>
 
 	<div class="cl pd-5 bg-1 bk-gray mt-20">
 		<span class="l">
@@ -61,6 +63,7 @@
 					<%--<td class="td-manage"><a style="text-decoration:none" onClick="picture_stop(this,'10001')" href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a> <a style="text-decoration:none" class="ml-5" onClick="picture_edit('图库编辑','picture-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="picture_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>--%>
 				<%--</tr>--%>
 				<c:forEach items="${medicineList}" var="item" varStatus="s">
+                    <%--<input type="hidden" value="${item.medicineId}" name="medicineId"/>--%>
 					<tr class="text-c">
 						<td><input name="" type="checkbox" value=""></td>
 						<td>${item.medicinePermitment}</td>
@@ -69,7 +72,7 @@
 						<td>${item.supplierName}</td>
 						<td>${item.expirationStringDate}</td>
 						<td>${item.medicineNumber}</td>
-						<td class="td-manage"><a style="text-decoration:none" onClick="picture_stop(this,'10001')" href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a> <a style="text-decoration:none" class="ml-5" onClick="picture_edit('图库编辑','picture-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="picture_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+						<td class="td-manage"><a style="text-decoration:none" onClick="picture_stop(this,'10001')" href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a> <a style="text-decoration:none" class="ml-5" onClick="picture_edit('图库编辑','picture-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="picture_del(this,${item.medicineId})" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -194,16 +197,31 @@ function picture_edit(title,url,id){
 /*图片-删除*/
 function picture_del(obj,id){
 	layer.confirm('确认要删除吗？',function(index){
+
+	    var data={}
+	    data.medicineId = id
+
+        var basePath = $("#path").val()
+
 		$.ajax({
 			type: 'POST',
-			url: '',
+			url: basePath + '/medicineDelete',
 			dataType: 'json',
-			success: function(data){
-				$(obj).parents("tr").remove();
-				layer.msg('已删除!',{icon:1,time:1000});
+            contentType:"application/json",
+			data:JSON.stringify(data),
+			success: function(backData){
+			    var statusMessage = backData['message'].trim()
+                if (statusMessage == "删除成功") {
+                    $(obj).parents("tr").remove();
+                    layer.msg(statusMessage,{icon:1,time:1500});
+                } else {
+                    layer.msg(statusMessage,{icon:2,time:1500});
+                }
+
 			},
-			error:function(data) {
-				console.log(data.msg);
+			error:function(backData) {
+                console.log(backData.msg);
+                layer.msg("网络错误",{icon:2,time:1500});
 			},
 		});		
 	});

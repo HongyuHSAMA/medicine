@@ -53,5 +53,15 @@ public class MedicineDaoTest {
 
     }
 
+    @Test
+    public void deleteTest() {
+        try {
+            medicineDao.deleteById(1000L);
+            System.out.println("1111111111");
+        } catch (Exception e) {
+            System.out.println("222222222222");
+        }
+    }
+
 
 }
