@@ -81,5 +81,13 @@ public interface MedicineDao {
                             @Param("medicineSupplierId") int medicineSupplierId
     );
 
+    /**
+     * 出库入库时进行数量的修改
+     * @param medicineId
+     * @param medicineNumber
+     * @return
+     */
+    boolean changeMedicineNum(@Param( "medicineId" ) long medicineId,@Param( "medicineNumber" ) int medicineNumber);
+
 
 }

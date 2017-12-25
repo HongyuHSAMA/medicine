@@ -1,5 +1,6 @@
 package com.design.service.impl;
 
+import com.design.dao.MedicineDao;
 import com.design.dao.ReplenishDao;
 import com.design.dao.WorkerDao;
 import com.design.entity.Medicine;
@@ -23,6 +24,9 @@ public class ReplenishServiceImpl implements ReplenishService {
     @Autowired
     private WorkerDao workerDao;
 
+    @Autowired
+    private MedicineDao medicineDao;
+
     @Override
     public List<Medicine> queryAllMedicineNameAndId() {
 
@@ -43,22 +47,19 @@ public class ReplenishServiceImpl implements ReplenishService {
         for (Replenish replenish :list){
             replenish.setCreateStringTime( simpleDateFormat.format( replenish.getCreateTime() ) );
         }
-
         return list;
     }
 
     @Override
     public boolean addNewReplenish(Replenish replenish) {
-
         try {
             replenish.setCreateTime(new SimpleDateFormat("yyyy-MM-dd").parse(replenish.getCreateStringTime()));
-
             if (replenishDao.insertReplenish(replenish)) {
+                medicineDao.changeMedicineNum( replenish.getReplenishMedicineId(),replenish.getReplenishMedicineNumber() );
                 return true;
             } else {
                 return false;
             }
-
         } catch (ParseException e) {
             return false;
         }

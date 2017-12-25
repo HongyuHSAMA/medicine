@@ -31,6 +31,7 @@ public class MedicineServiceImpl implements MedicineService {
     private String medicineImageSavePath;
 
 
+
     @Value("${medicineImage.url}")
     private String medicineImageUrl;
 
@@ -108,8 +109,6 @@ public class MedicineServiceImpl implements MedicineService {
         } catch (IOException e) {
             return false;
         }
-
-
     }
 
     @Override

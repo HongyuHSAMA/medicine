@@ -180,7 +180,6 @@ public class MedicineController {
         //时间格式转换
         SimpleDateFormat format = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" );
 
-
         medicine.setProductionStringDate( format.format( medicine.getProductionDate() ) );
         medicine.setExpirationStringDate( format.format( medicine.getExpirationDate() ) );
 

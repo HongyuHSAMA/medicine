@@ -53,7 +53,8 @@
             <tbody>
 
             <c:forEach items="${medicineList}" var="item" varStatus="s">
-                <%--<input type="hidden" value="${item.medicineId}" name="medicineId"/>--%>
+                <%--<input type="hidden" id="warningNumber${s.index}"  >--%>
+                <p id="warningNumber${s.index}" hidden="hidden">${item.warningNumber}</p>
                 <tr class="text-c">
                     <td><input name="subCheck" type="checkbox" value="${item.medicineId}"></td>
                     <td>${item.medicinePermitment}</td>
@@ -64,7 +65,7 @@
                     <td>${item.medicineName}</td>
                     <td>${item.supplierName}</td>
                     <td>${item.expirationStringDate}</td>
-                    <td>${item.medicineNumber}</td>
+                    <td id="number${s.index}">${item.medicineNumber}</td>
                     <td class="td-manage"><a style="text-decoration:none" onClick="picture_stop(this,'10001')"
                                              href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a> <a
                             style="text-decoration:none" class="ml-5"
@@ -98,7 +99,18 @@
             {"orderable": false, "aTargets": [0, 7]}// 制定列不参与排序
         ]
     });
+    $(function () {
+        for (var i = 0; i< ${fn:length(medicineList)}; i++){
+            var number = $('#number'+i).text();
+            var  warningNumber = $('#warningNumber'+i).text();
+            console.log(number);
+            console.log(warningNumber);
+            if( parseInt(number)< parseInt(warningNumber)){
+               $('#number'+i).html(number+'<span id="test" style="color: red">(需要补充)</span>');
 
+            }
+        }
+    });
     /*批量删除*/
 
     function datadel() {

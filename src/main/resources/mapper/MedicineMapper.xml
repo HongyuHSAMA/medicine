@@ -40,7 +40,7 @@
     <select id="queryAll" resultType="com.design.entity.Medicine">
 
         SELECT medicine_id,medicine_name,medicine_permitment,picture,
-        supplier_name,expiration_date,medicine_number
+        supplier_name,expiration_date,medicine_number,medicine.warning_number
         FROM medicine,supplier WHERE medicine_supplier_id = supplier_id
 
     </select>
@@ -49,4 +49,10 @@
         SELECT * FROM medicine
         WHERE medicine_id=#{medicineId}
     </select>
+
+    <update id="changeMedicineNum" >
+        UPDATE medicine
+        SET medicine_number = medicine_number + #{medicineNumber}
+        WHERE medicine_id = #{medicineId}
+    </update>
 </mapper>
