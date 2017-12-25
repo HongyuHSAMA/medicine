@@ -125,11 +125,11 @@
 
                     for (info in result){
                       if(info['message'] != "操作成功"){
-                          layer.msg(info['message'], {icon: 5, time: 1000});
+                          layer.msg(info['message'], {icon: 2, time: 1000});
                       }
-                    };
+                    }
 //                    $("[name='subCheck']:checked").attr("check", false);
-                    layer.msg("操作成功", {icon: 5, time: 1000});
+                    layer.msg("操作成功", {icon: 1, time: 1000});
                     window.location.reload();
                 },
                 error: function (message) {
