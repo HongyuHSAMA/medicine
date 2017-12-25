@@ -29,13 +29,11 @@ public interface ReplenishDao {
                             @Param("replenishMedicinePrice") int replenishMedicinePrice);
 
     /**
-     * 根据偏移量查询进货表信息
-     *
-     * @param offset
-     * @param limit
+     * 获取全部入库记录
+
      * @return
      */
-    List<Replenish> queryAll(@Param("offset") int offset, @Param("limit") int limit);
+    List<Replenish> queryAll();
 
 
     List<Medicine> queryAllMedicine();

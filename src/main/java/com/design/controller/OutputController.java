@@ -46,4 +46,13 @@ public class OutputController {
         return modelAndView;
     }
 
+    @RequestMapping(value="/output-list")
+    public ModelAndView inputList(ModelAndView modelAndView){
+
+        modelAndView.addObject( "outputList", billsService.getBillsList());
+        modelAndView.setViewName( "output/output-list" );
+
+        return modelAndView;
+    }
+
 }

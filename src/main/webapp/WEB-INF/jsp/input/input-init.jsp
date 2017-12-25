@@ -8,6 +8,16 @@
 </head>
 <body>
 <div class="page-container">
+	<div class="cl pd-5 bg-1 bk-gray mt-20">
+		<span class="l">
+
+			<a class="btn btn-primary radius" onclick="input_list('查看入库记录','${basePath}/input-list')"
+			   href="javascript:;">
+				<i class="Hui-iconfont">&#xe600;</i> 查看入库记录
+			</a>
+		</span>
+
+	</div>
 	<form class="form form-horizontal" id="form-input" action="${basePath}/inputSubmit" method="post" >
 
 		<div class="row cl">
@@ -86,6 +96,15 @@
 <script type="text/javascript" src="${basePath}/lib/webuploader/0.1.5/webuploader.min.js"></script>
 
 <script type="text/javascript">
+	 /*入库记录查看*/
+    function input_list(title, url) {
+        var index = layer.open({
+            type: 2,
+            title: title,
+            content: url
+        });
+        layer.full(index);
+    }
 function article_save(){
 	alert("刷新父级的时候会自动关闭弹层。")
 	window.parent.location.reload();

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 @Service
 public class BillsServiceImpl implements BillsService{
@@ -30,5 +31,17 @@ public class BillsServiceImpl implements BillsService{
             return false;
         }
 
+    }
+
+    @Override
+    public List<Bills> getBillsList() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" );
+
+        List<Bills> list =billsDao.queryAll();
+        for (Bills bills :list){
+            bills.setCreateStringTime( simpleDateFormat.format( bills.getCreateTime() ) );
+        }
+
+        return list;
     }
 }

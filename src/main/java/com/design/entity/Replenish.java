@@ -9,7 +9,7 @@ import java.util.Date;
 @ToString
 public class Replenish {
 
-    @Getter @Setter private Long replenish_id;//进货批次id
+    @Getter @Setter private Long replenishId;//进货批次id
     @Getter @Setter private Long replenishMedicineId;//药品id
     @Getter @Setter private Date createTime;//进货日期
     @Getter @Setter private Integer replenishMedicineNumber;//进货数量

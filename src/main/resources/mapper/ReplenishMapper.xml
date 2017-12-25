@@ -16,9 +16,10 @@
             VALUE(#{replenishMedicineId},#{createTime},#{replenishMedicineNumber},#{replenishWorkerId},#{replenishMedicinePrice})
     </insert>
 
-    <select id="queryAll" resultType="com.design.entity.Replenish" parameterType="int">
-        SELECT * FROM replenish
-        LIMIT #{offset},#{limit}
+    <select id="queryAll" resultType="com.design.entity.Replenish" >
+        SELECT replenish_id,replenish_medicine_id,replenish_medicine_number,replenish_medicine_price,replenish_worker_id,replenish.create_time
+        FROM replenish
+
     </select>
 
     <select id="queryAllMedicine" resultType="Medicine">

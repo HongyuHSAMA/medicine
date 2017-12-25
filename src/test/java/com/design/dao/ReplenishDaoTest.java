@@ -38,7 +38,7 @@ public class ReplenishDaoTest {
     @Test
     public void queryAll() throws Exception {
 
-        List<Replenish> list = replenishDao.queryAll( 0,5 );
+        List<Replenish> list = replenishDao.queryAll( );
         Iterator iterator = list.iterator();
         while(iterator.hasNext()){
             System.out.println( iterator.next() );

@@ -21,11 +21,9 @@ public interface BillsDao {
     /**
      * 根据偏移量查询账单数据
      *
-     * @param offset
-     * @param limit
      * @return
      */
-    List<Bills> queryAll(@Param("offset") int offset, @Param("limit") int limit);
+    List<Bills> queryAll();
 
     /**
      * 根据账单Id查询账单

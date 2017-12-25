@@ -35,6 +35,19 @@ public class ReplenishServiceImpl implements ReplenishService {
     }
 
     @Override
+    public List<Replenish> getReplenishAll() {
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" );
+
+        List<Replenish> list = replenishDao.queryAll();
+        for (Replenish replenish :list){
+            replenish.setCreateStringTime( simpleDateFormat.format( replenish.getCreateTime() ) );
+        }
+
+        return list;
+    }
+
+    @Override
     public boolean addNewReplenish(Replenish replenish) {
 
         try {

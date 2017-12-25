@@ -15,9 +15,8 @@
                 VALUE (#{createTime},#{billMedicineId},#{billMedicineNumber},#{billMedicinePrice},#{billWorkerId},#{billCustomer})
     </insert>
 
-    <select id="queryAll" resultType="com.design.entity.Bills" parameterType="int">
+    <select id="queryAll" resultType="com.design.entity.Bills" >
         SELECT * FROM bills
-        LIMIT #{offset},#{limit}
     </select>
 
     <select id="queryById" parameterType="long">

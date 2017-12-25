@@ -11,6 +11,8 @@ public interface ReplenishService {
     List<Medicine> queryAllMedicineNameAndId();
     List<Worker> queryAllWorkerNameAndId();
 
+    List<Replenish> getReplenishAll();
+
     boolean addNewReplenish(Replenish replenish);
 
 }

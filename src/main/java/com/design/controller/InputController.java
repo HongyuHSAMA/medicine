@@ -16,33 +16,37 @@ public class InputController {
     private ReplenishService replenishService;
 
 
-
     @RequestMapping("/input")
     public ModelAndView input(ModelAndView modelAndView) {
 
-        modelAndView.addObject("medicines",replenishService.queryAllMedicineNameAndId());
-        modelAndView.addObject("workers",replenishService.queryAllWorkerNameAndId());
-        modelAndView.setViewName("input/input-init");
+        modelAndView.addObject( "medicines", replenishService.queryAllMedicineNameAndId() );
+        modelAndView.addObject( "workers", replenishService.queryAllWorkerNameAndId() );
+        modelAndView.setViewName( "input/input-init" );
         return modelAndView;
     }
 
     @RequestMapping("/inputSubmit")
-    public ModelAndView inputSubmit(ModelAndView modelAndView,Replenish replenish) {
+    public ModelAndView inputSubmit(ModelAndView modelAndView, Replenish replenish) {
 
-        if ("".equals(replenish.getCreateStringTime()) || replenish.getCreateStringTime() == null) {
-            modelAndView.addObject(Message.statusMsg,Message.DATE_ERROR);
+        if ("".equals( replenish.getCreateStringTime() ) || replenish.getCreateStringTime() == null) {
+            modelAndView.addObject( Message.statusMsg, Message.DATE_ERROR );
         } else {
-            if (replenishService.addNewReplenish(replenish)) {
-                modelAndView.addObject(Message.statusMsg,Message.ADD_SUCCESS);
+            if (replenishService.addNewReplenish( replenish )) {
+                modelAndView.addObject( Message.statusMsg, Message.ADD_SUCCESS );
             }
         }
 
-
-        modelAndView.setViewName("input/input-message");
-
+        modelAndView.setViewName( "input/input-message" );
 
 
+        return modelAndView;
+    }
 
+    @RequestMapping(value="/input-list")
+    public ModelAndView inputList(ModelAndView modelAndView){
+
+        modelAndView.addObject( "inputList",replenishService.getReplenishAll() );
+        modelAndView.setViewName( "input/input-list" );
         return modelAndView;
     }
 
