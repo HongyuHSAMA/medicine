@@ -18,5 +18,7 @@ public class Bills {
 
 
     @Getter @Setter private String createStringTime;
+    @Getter @Setter private String billWorkerName;
+    @Getter @Setter private String billMedicineName;
 
 }

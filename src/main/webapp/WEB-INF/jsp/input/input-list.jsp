@@ -27,9 +27,9 @@
             <tr class="text-c">
                 <td></td>
                     <td>${item.replenishId}</td>
-                    <td>${item.replenishMedicineId}</td>
+                    <td>${item.replenishMedicineName}</td>
                     <td>${item.replenishMedicineNumber}</td>
-                    <td>${item.replenishWorkerId}</td>
+                    <td>${item.replenishWorkerName}</td>
                     <td>${item.createStringTime}</td>
                     <td>${item.replenishMedicinePrice}</td>
                 <td class="td-manage"></td>

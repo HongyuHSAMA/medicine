@@ -6,6 +6,7 @@ import com.design.entity.Medicine;
 import com.design.entity.Supplier;
 import com.design.service.MedicineService;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,6 +43,8 @@ public class MedicineServiceImpl implements MedicineService {
         PageHelper.startPage( pageNum,pageSize );
         List<Medicine> list = medicineDao.queryAll( /*pageNum,pageSize*/ );
 
+//        PageInfo<Medicine> pageInfo = new PageInfo<>( list );
+//        System.out.println( pageInfo.getPageNum() );
         return list;
     }
 

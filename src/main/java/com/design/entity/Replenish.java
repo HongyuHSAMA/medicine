@@ -19,4 +19,6 @@ public class Replenish {
 
 
     @Getter @Setter private String createStringTime;
+    @Getter @Setter private String replenishWorkerName;
+    @Getter @Setter private String replenishMedicineName;
 }

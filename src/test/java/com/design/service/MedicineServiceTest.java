@@ -20,6 +20,12 @@ public class MedicineServiceTest {
 
     @Test
     public void getMedicineList() throws Exception {
+
+        List<Medicine> list = medicineService.getMedicineList( 2,2 );
+        for (Medicine medicine: list){
+            System.out.println( medicine.toString() );
+        }
+
     }
 
     @Test

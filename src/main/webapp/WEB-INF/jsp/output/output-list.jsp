@@ -12,23 +12,23 @@
         <table class="table table-border table-bordered table-bg table-hover table-sort">
             <thead>
             <tr class="text-c">
-                <th width="1"></th>
+                <th width="10"></th>
                 <th width="150">药品名称</th>
                 <th width="100">出库数量</th>
                 <th width="80">经手人</th>
                 <th width="120">出库日期</th>
                 <th width="100">售价（元/盒）</th>
                 <th width="90">客户姓名</th>
-                <th width="1"></th>
+                <th width="10"></th>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${outputList}" var="item" varStatus="s">
                 <tr class="text-c">
-                    <td></td>
-                    <td>${item.billMedicineId}</td>
+                    <td class="td-manage"></td>
+                    <td>${item.billMedicineName}</td>
                     <td>${item.billMedicineNumber}</td>
-                    <td>${item.billWorkerId}</td>
+                    <td>${item.billWorkerName}</td>
                     <td>${item.createStringTime}</td>
                     <td>${item.billMedicinePrice}</td>
                     <td>${item.billCustomer}</td>
