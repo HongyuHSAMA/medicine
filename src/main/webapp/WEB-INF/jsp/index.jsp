@@ -36,7 +36,7 @@
                         <ul class="dropDown-menu menu radius box-shadow">
                             <li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
                             <li><a href="#">切换账户</a></li>
-                            <li><a href="/logout">退出</a></li>
+                            <li><a href="${basePath}/logout">退出</a></li>
                         </ul>
                     </li>
                     <li id="Hui-skin" class="dropDown right dropDown_hover"><a href="javascript:;" class="dropDown_A"
@@ -140,8 +140,8 @@
             fix: false, //不固定
             maxmin: true,
             shade: 0.4,
-            title: '查看信息',
-            content: '<div>管理员信息</div>'
+            title: '个人信息',
+            content: '<div>${worker.workerName}</div><div>${worker.workerId}</div>'
         });
     }
 

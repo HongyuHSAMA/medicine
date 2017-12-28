@@ -29,7 +29,7 @@
     <link href="${basePath}/lib/jquery.validation/1.14.0/messages_zh.js"/>
 
 
-    <title>后台登录 - H-ui.admin v3.1</title>
+    <title>药库系统登录 - H-ui.admin v3.1</title>
     <script>
         $.validator.setDefaults({
             submitHandler: function() {

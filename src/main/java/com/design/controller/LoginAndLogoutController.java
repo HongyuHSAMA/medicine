@@ -16,8 +16,8 @@ public class LoginAndLogoutController {
     @Autowired
     private WorkerDao workerDao;
 
-    @RequestMapping("/")
-//    @RequestMapping(value="/login")
+//    @RequestMapping("/")
+    @RequestMapping(value="/login")
     public ModelAndView welcome(ModelAndView modelAndView){
 
         modelAndView.setViewName("login");

@@ -18,10 +18,11 @@ public class LoginInterceptor implements HandlerInterceptor {
         boolean flag = false;
         //获取用户发起的请求的URL路径
         String requestUrl = request.getServletPath();
-
+        System.out.println( "URL:"+requestUrl );
         //进行判断是否需要拦截
         for (String s : IGNORE_URI) {
             if (requestUrl.contains( s )) {
+                System.out.println( "包含不需要拦截的urL" );
                 flag = true;
                 break;
             }
@@ -30,6 +31,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         if (!flag) {
             Worker worker = (Worker) request.getSession().getAttribute( "worker" );
             if (worker == null) {
+                System.out.println( "没有登录对象" );
                 request.setAttribute( "message", "请先登录再访问网站" );
                 request.getRequestDispatcher( "login" ).forward( request, response );
 

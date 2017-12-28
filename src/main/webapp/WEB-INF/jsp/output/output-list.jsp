@@ -13,19 +13,19 @@
             <thead>
             <tr class="text-c">
                 <th width="10"></th>
-                <th width="150">药品名称</th>
+                <th width="160">药品名称</th>
                 <th width="100">出库数量</th>
-                <th width="80">经手人</th>
-                <th width="120">出库日期</th>
+                <th width="100">经手人</th>
+                <th width="100">出库日期</th>
                 <th width="100">售价（元/盒）</th>
-                <th width="90">客户姓名</th>
+                <th width="100">客户姓名</th>
                 <th width="10"></th>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${outputList}" var="item" varStatus="s">
                 <tr class="text-c">
-                    <td class="td-manage"></td>
+                    <td></td>
                     <td>${item.billMedicineName}</td>
                     <td>${item.billMedicineNumber}</td>
                     <td>${item.billWorkerName}</td>

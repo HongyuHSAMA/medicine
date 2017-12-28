@@ -58,7 +58,7 @@
                 <tr class="text-c">
                     <td><input name="subCheck" type="checkbox" value="${item.medicineId}"></td>
                     <td>${item.medicinePermitment}</td>
-                    <td><a href="javascript:;" onClick="member_show('','/member-show/'+${item.medicineId},'10001','360','400')"><img width="210"
+                    <td><a href="javascript:;" onClick="member_show('','${basePath}/member-show/'+${item.medicineId},'10001','360','400')"><img width="210"
                                                                                                      class="picture-thumb"
                                                                                                      src="${item.imgUrl}"></a>
                     </td>
